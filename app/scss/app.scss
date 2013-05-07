@@ -1,0 +1,59 @@
+@import "compass/reset";
+@import "compass/css3";
+
+
+.memory-game {
+
+  td {
+    border: 1px solid #CCC;
+  }
+
+  .card {
+    position: relative;
+  }
+
+  .back, .front  {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -ms-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+
+  .back {
+    -moz-transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .front {
+    -moz-transform: protateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+
+  .flipped .front {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+
+  .flipped .back {
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+  }
+}
