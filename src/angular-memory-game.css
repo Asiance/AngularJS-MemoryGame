@@ -3,6 +3,7 @@
 }
 
 .memory-game .card {
+  cursor: pointer;
   position: relative;
 }
 

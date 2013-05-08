@@ -1,9 +1,13 @@
-
 (function() {
+
+  "use strict";
   var module = angular.module("angular-memory-game-example", ["memory-game"]);
+
 }());
 
 function ExampleController($scope) {
+
+  // Listeners for events triggered by angular-memory-game
   $scope.$on("memoryGameUnmatchedPairEvent", function() {
     $scope.message = "Try again!";
   });
@@ -13,4 +17,5 @@ function ExampleController($scope) {
   $scope.$on("memoryGameCompletedEvent", function() {
     $scope.message = "Success!";
   });
+
 }
