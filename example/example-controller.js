@@ -1,6 +1,6 @@
 
 (function() {
-  var module = angular.module("angularjs-memory-game-example", ["memory-game"]);
+  var module = angular.module("angular-memory-game-example", ["memory-game"]);
 }());
 
 function ExampleController($scope) {
