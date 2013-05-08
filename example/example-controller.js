@@ -12,7 +12,7 @@ function ExampleController($scope) {
     $scope.message = "Try again!";
   });
   $scope.$on("memoryGameMatchedPairEvent", function() {
-    $scope.message = "Good matched!";
+    $scope.message = "Good match!";
   });
   $scope.$on("memoryGameCompletedEvent", function() {
     $scope.message = "Success!";

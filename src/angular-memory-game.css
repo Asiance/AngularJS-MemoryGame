@@ -26,6 +26,7 @@
   top: 0;
   -moz-transform: rotateY(0deg);
   -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
   -webkit-transform: rotateY(0deg);
   transform: rotateY(0deg);
 }
@@ -33,6 +34,7 @@
 .memory-game .front {
   -moz-transform: protateY(180deg);
   -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(0deg);
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
@@ -47,6 +49,7 @@
 
 .memory-game .flipped .back {
   -moz-transform: rotateY(-180deg);
+  -ms-transform: rotateY(0deg);
   -o-transform: rotateY(-180deg);
   -webkit-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
