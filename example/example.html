@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="angularjs-memory-game-example">
+  <head>
+    <meta charset="utf-8">
+    <title>angularjs-memory-game example page</title>
+    <link rel="stylesheet" href="../src/angularjs-memory-game.css">
+    <style>
+      body { text-align: center; }
+      table {  margin: 0 auto; }
+    </style>
+  </head>
+  <body ng-controller="ExampleController">
+    <h1>AngularJS Memory Game example</h1>
+
+    <memory-game
+      columns="2"
+      lines="3"
+      tiles-dir="./img/"
+      tiles-src="[sci_fi-48.png, sheep-48.png, fork-48.png]"
+      tile-width="48"
+      tile-height="48">
+    </memory-game>
+
+    <div>
+      <h2>Parent scope</h2>
+      <p>{{message}}</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="../src/angularjs-memory-game.js"></script>
+    <script src="example-controller.js"></script>
+  </body>
+</html>

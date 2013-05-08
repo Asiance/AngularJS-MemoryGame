@@ -1,55 +1,37 @@
-"use strict";
+(function () {
+  "use strict";
 
-/* Directives */
+  var memoryGameModule = angular.module("memory-game", []);
 
-
-angular
-  .module("myApp.directives", [])
-  .directive("memoryGame", function() {
+  memoryGameModule.directive("memoryGame", function () {
     return {
       restrict: "E",
       replace: true,
       scope: {
-        tileWidth: "@",
-        tileHeight: "@"
+        tilesDir: "@",
+        tileHeight: "@",
+        tileWidth: "@"
       },
-      template: '<div class="memory-game">' +
-                  '<table>' +
+      template: '<table class="memory-game">' +
                     '<tr ng-repeat="line in grid">' +
                       '<td ng-repeat="tile in line" class="container">' +
                         '<div class="card" ng-class="{flipped: tile.flipped}" ng-click="flipTile(tile)">'+
-                            '<img class="front" ng-src="./img/memory-game/{{tile.title}}" width="{{tileWidth}}" height="{{tileHeight}}">' +
-                            '<img class="back" ng-src="./img/memory-game/back.png" width="{{tileWidth}}" height="{{tileHeight}}">' +
+                            '<img class="front" ng-src="{{tilesDir}}{{tile.title}}" width="{{tileWidth}}" height="{{tileHeight}}">' +
+                            '<img class="back" ng-src="{{tilesDir}}back.png" width="{{tileWidth}}" height="{{tileHeight}}">' +
                         '</div>' +
                       '</td>' +
                     '</tr>' +
-                  '</table>' +
-                  '<p>{{message}}</p>' +
-                  '<p>Remaining: {{unmatchedPairs}}</p>' +
-                  '<p>Time: {{timer}}</p>' +
-                '</div>',
+                  '</table>',
       controller: function($scope, $element, $attrs, $timeout) {
         if ($attrs.tilesSrc.replace(/[\[\]\s]/g, "").split(",").length * 2 == $attrs.lines * $attrs.columns) {
           var tileNames = $attrs.tilesSrc.replace(/[\[\]\s]/g, "").split(",");
           var deck = makeDeck(tileNames);
           $scope.grid = makeGrid(deck);
           $scope.firstPick = $scope.secondPick = undefined;
-          $scope.message = "Start!";
-          $scope.timer = 0;
+          console.log("Start!");
           $scope.unmatchedPairs = tileNames.length;
         } else {
-          $scope.message = "Error!";
-        }
-
-        $scope.onTimeout = function(){
-            $scope.timer++;
-            timer = $timeout($scope.onTimeout, 1000);
-        }
-
-        var timer = $timeout($scope.onTimeout, 1000);
-
-        $scope.stop = function(){
-            $timeout.cancel(timer);
+          console.log("ERROR in memoryGame directive: Bad parameters (check number of lines and row and number image files)");
         }
 
         function Tile(title) {
@@ -74,16 +56,17 @@ angular
             if ($scope.firstPick.title === tile.title) {
               $scope.unmatchedPairs--;
               if ($scope.unmatchedPairs > 0) {
-                $scope.message = "Matched";
+                console.log("Matched");
+                $scope.$emit("memoryGameMatchedPairEvent");
               } else {
-                $scope.stop();
-                $scope.message = "Complete!";
-                $scope.$emit('memoryGameCompleteEvent', {timer: $scope.timer, remaining: $scope.remaining});
+                console.log("Completed");
+                $scope.$emit("memoryGameCompletedEvent");
               }
               $scope.firstPick = $scope.secondPick = undefined;
             } else {
               $scope.secondPick = tile;
-              $scope.message = "Mismatched";
+              $scope.$emit("memoryGameUnmatchedPairEvent");
+              console.log("Mismatched");
               var tmpFirstPick = $scope.firstPick;
               var tmpSecondPick = $scope.secondPick;
               $scope.firstPick = $scope.secondPick = undefined;
@@ -122,3 +105,4 @@ angular
       }
     }
   });
+}());
