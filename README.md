@@ -13,7 +13,7 @@ Instructions
 - **tile-width** *integer*
 - **tile-height** *integer*
 
-###Example###
+### Example ###
   	<memory-game
       columns="3"
       lines="2"
@@ -23,7 +23,16 @@ Instructions
       tile-height="48">
     </memory-game>
 
-###Output###
+### Output ###
 - `memoryGameUnmatchedPairEvent` when player picks **unmatched** pair.
 - `memoryGameMatchedPairEvent` when player picks **matched** pair.
 - `memoryGameCompletedEvent` when game is **completed**.
+
+Tests
+-----
+### Requirements ###
+
+- [node.js](http://nodejs.org/)
+- [Karma](http://karma-runner.github.io/0.8/index.html)
+
+To execute tests, use `test.sh` in `test/scripts/`.

@@ -3,11 +3,12 @@ basePath = '../';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'test/lib/angular/angular.min.js',
-  'example/example-controller.js',
-  'src/angular-memory-game.js',
-  'test/lib/angular/angular-mocks.js',
-  'test/unit/directiveSpec.js'
+  'lib/jquery-2.0.0.min.js',
+  'lib/angular.min.js',
+  '../example/example-controller.js',
+  '../src/angular-memory-game.js',
+  'lib/angular-mocks.js',
+  'moduleSpec.js'
 ];
 
 autoWatch = true;

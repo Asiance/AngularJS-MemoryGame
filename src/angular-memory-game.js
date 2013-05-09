@@ -45,9 +45,8 @@ angular
       } else {
         if ($scope.firstPick.title === tile.title) {
           $scope.unmatchedPairs--;
-          if ($scope.unmatchedPairs > 0) {
-            $scope.$emit("memoryGameMatchedPairEvent");
-          } else {
+          $scope.$emit("memoryGameMatchedPairEvent");
+          if ($scope.unmatchedPairs == 0) {
             $scope.$emit("memoryGameCompletedEvent");
           }
         } else {
