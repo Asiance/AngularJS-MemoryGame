@@ -1,7 +1,7 @@
 (function () {
 
   "use strict";
-angular
+  angular
   .module("memory-game", [])
   .controller('MemoryGameCtrl', ['$scope', '$attrs', '$timeout', function($scope, $attrs, $timeout) {
     // Check coherence between numbers of lines*columns, and numers of provided images
@@ -125,4 +125,5 @@ angular
       controller: 'MemoryGameCtrl'
     };
   });
+
 }());
