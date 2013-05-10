@@ -5,6 +5,7 @@
 .memory-game .card {
   cursor: pointer;
   position: relative;
+  line-height: 0;
 }
 
 .memory-game .back, .memory-game .front  {
