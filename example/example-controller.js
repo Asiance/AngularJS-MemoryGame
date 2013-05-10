@@ -5,7 +5,7 @@
 
 }());
 
-function ExampleController($scope, $rootScope) {
+function ExampleController($scope) {
 
   $scope.tilesSrc = ['sci_fi-48.png', 'sheep-48.png', 'fork-48.png'];
 
