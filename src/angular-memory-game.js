@@ -5,12 +5,11 @@
   .module("memory-game", [])
   .controller('MemoryGameCtrl', ['$scope', '$attrs', '$timeout', function($scope, $attrs, $timeout) {
     // Check coherence between numbers of lines*columns, and numers of provided images
-    if ($attrs.tilesSrc.replace(/[\[\]\s]/g, "").split(",").length * 2 === $attrs.lines * $attrs.columns) {
-      var tileNames = $attrs.tilesSrc.replace(/[\[\]\s]/g, "").split(",");
-      var deck = makeDeck(tileNames);
+    if ($scope.tilesSrc.length * 2 === $attrs.lines * $attrs.columns) {
+      var deck = makeDeck($scope.tilesSrc);
       $scope.grid = makeGrid(deck);
       $scope.firstPick = $scope.secondPick = undefined;
-      $scope.unmatchedPairs = tileNames.length;
+      $scope.unmatchedPairs = $scope.tilesSrc.length;
     } else {
       console.log("ERROR in memoryGame directive: Bad parameters (check number of lines and row and number image files)");
     }
@@ -109,6 +108,7 @@
       replace: true,
       scope: {
         tilesDir: "@",
+        tilesSrc: "=",
         tileHeight: "@",
         tileWidth: "@"
       },

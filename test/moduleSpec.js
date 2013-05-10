@@ -6,11 +6,11 @@
     beforeEach(module("memory-game"));
     beforeEach(inject(function($controller, $rootScope) {
       scope = $rootScope.$new();
+      scope.tilesSrc = ['sci_fi-48.png', 'sheep-48.png', 'fork-48.png'];
       attrs = {
-        "columns": 2,
-        "lines": 3,
+        "columns": 3,
+        "lines": 2,
         "tilesDir": "./img/",
-        "tilesSrc": "[sci_fi-48.png, sheep-48.png, fork-48.png]",
         "tileWidth": "48",
         "tileHeight": "48"
       };
@@ -113,15 +113,16 @@
     var element, scope, attrs, timeout;
     beforeEach(module("memory-game"));
     beforeEach(inject(function($rootScope, $compile, $timeout) {
-      element = angular.element('<memory-game columns="2" lines="3" tiles-dir="./img/" tiles-src="[sci_fi-48.png, sheep-48.png, fork-48.png]" tile-width="48" tile-height="48"></memory-game>');
+      element = angular.element('<memory-game columns="3" lines="2" tiles-dir="./img/" tiles-src="tilesSrc" tile-width="48" tile-height="48"></memory-game>');
       scope = $rootScope;
+      scope.tilesSrc = ['sci_fi-48.png', 'sheep-48.png', 'fork-48.png'];
       timeout = $timeout;
       $compile(element)(scope);
       scope.$digest();
     }));
 
     it("should have the correct amount of lines", function() {
-      expect(element.find("tr").length).toBe(3);
+      expect(element.find("tr").length).toBe(2);
     });
 
     it("should have the correct amount of cells/tiles", function() {
