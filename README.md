@@ -3,7 +3,7 @@ AngularJS-MemoryGame
 
 Directive to build a memory game based on AngularJS, flip animation in CSS3
 
-[Example] http://asiance.github.io/AngularJS-MemoryGame/example/example.html
+[Example] (http://asiance.github.io/AngularJS-MemoryGame/example/example.html)
 
 ![Preview AngularJS-MemoryGame](https://github.com/Asiance/AngularJS-MemoryGame/raw/master/preview.png)
 
