@@ -20,4 +20,12 @@ function ExampleController($scope) {
     $scope.message = "Success!";
   });
 
+  $scope.restartBtn = function() {
+    var newParams = {
+      "tilesSrc": ['fork-48.png', 'fork-48.png', 'fork-48.png']
+    };
+    $scope.message = "Restart! (and fork us on GitHub)";
+    $scope.$broadcast("memoryGameRestartEvent", newParams);
+  };
+
 }
