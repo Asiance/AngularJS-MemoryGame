@@ -4,15 +4,24 @@
   angular
   .module("memory-game", [])
   .controller('MemoryGameCtrl', ['$scope', '$attrs', '$timeout', function($scope, $attrs, $timeout) {
-    // Check coherence between numbers of lines*columns, and numers of provided images
-    if ($scope.tilesSrc.length * 2 === $attrs.lines * $attrs.columns) {
-      var deck = makeDeck($scope.tilesSrc);
-      $scope.grid = makeGrid(deck);
-      $scope.firstPick = $scope.secondPick = undefined;
-      $scope.unmatchedPairs = $scope.tilesSrc.length;
-    } else {
-      console.log("ERROR in memoryGame directive: Bad parameters (check number of lines and row and number image files)");
+
+    /**
+     * Init the game
+     */
+    $scope.start = function() {
+      // Check coherence between numbers of lines*columns, and numers of provided images
+      if ($scope.tilesSrc.length * 2 === $attrs.lines * $attrs.columns) {
+        var deck = makeDeck($scope.tilesSrc);
+        $scope.grid = makeGrid(deck);
+        $scope.firstPick = $scope.secondPick = undefined;
+        $scope.unmatchedPairs = $scope.tilesSrc.length;
+      } else {
+        console.log("ERROR in memoryGame directive: Bad parameters (check number of lines and row and number image files)");
+      }
     }
+
+    // On load, init the game
+    $scope.start();
 
     /**
      * Define Tile object
@@ -62,6 +71,13 @@
       }
     };
 
+    $scope.$on("memoryGameRestartEvent", function(event, args) {
+      if (args && args.tilesSrc) {
+        $scope.tilesSrc = args.tilesSrc;
+      }
+      $scope.start();
+    });
+
     /**
      * Create set of tiles
      * @param {array} tileNames Array of filenames
@@ -101,7 +117,9 @@
       var i = Math.floor(Math.random()*tileDeck.length);
       return tileDeck.splice(i, 1)[0];
     }
+
   }])
+
   .directive("memoryGame", function () {
     return {
       restrict: "E",

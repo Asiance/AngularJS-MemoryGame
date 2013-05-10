@@ -5,7 +5,7 @@
 
 }());
 
-function ExampleController($scope) {
+function ExampleController($scope, $rootScope) {
 
   $scope.tilesSrc = ['sci_fi-48.png', 'sheep-48.png', 'fork-48.png'];
 
@@ -19,5 +19,13 @@ function ExampleController($scope) {
   $scope.$on("memoryGameCompletedEvent", function() {
     $scope.message = "Success!";
   });
+
+  $scope.restartBtn = function() {
+    var newParams = {
+      "tilesSrc": ['fork-48.png', 'fork-48.png', 'fork-48.png']
+    };
+    $scope.message = "Restart! (and fork us on GitHub)";
+    $scope.$broadcast("memoryGameRestartEvent", newParams);
+  };
 
 }
