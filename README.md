@@ -1,7 +1,8 @@
 AngularJS-MemoryGame
 ====================
 
-Directive to build a memory game based on AngularJS
+Directive to build a memory game based on AngularJS, flip animation in CSS3
+![Preview AngularJS-MemoryGame](https://github.com/Asiance/AngularJS-MemoryGame/raw/master/preview.png)
 
 Usage
 ------------
