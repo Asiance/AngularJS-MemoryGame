@@ -55,6 +55,14 @@ $scope.$on("memoryGameCompletedEvent", function() {
   $scope.message = "Success!";
 });
 ```
+5. Trigger restart event (with possibility to load new tiles):
+```javascript
+var newParams = {
+  "tilesSrc": ['fork-48.png', 'fork-48.png', 'fork-48.png']
+};
+$scope.$broadcast("memoryGameRestartEvent", newParams);
+};
+```
 
 ### Parameters ###
 - **columms** *integer*
@@ -63,6 +71,9 @@ $scope.$on("memoryGameCompletedEvent", function() {
 - **tiles-src** *array of images filenames*
 - **tile-width** *integer*
 - **tile-height** *integer*
+
+### Input ###
+- `memoryGameRestartEvent` when player wants to start a new game.
 
 ### Output ###
 - `memoryGameUnmatchedPairEvent` when player picks **unmatched** pair.
