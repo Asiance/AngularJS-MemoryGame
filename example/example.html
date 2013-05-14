@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>angularjs-memory-game example page</title>
     <link rel="stylesheet" href="../src/angular-memory-game.css">
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="../src/angular-memory-game-ie8.css">
+    <![endif]-->
     <style>
       body { text-align: center; }
       table { margin: 0 auto; }
@@ -20,7 +23,6 @@
       tile-width="48"
       tile-height="48">
     </memory-game>
-
 
     <div>
       <h2>Parent scope</h2>

@@ -1,0 +1,28 @@
+.memory-game td {
+  border: 1px solid #CCCCCC;
+}
+
+.memory-game .card {
+  cursor: pointer;
+  line-height: 0;
+  position: relative;
+}
+
+.memory-game .back, .memory-game .front  {
+  visibility: hidden;
+}
+
+.memory-game .back {
+  left: 0;
+  position: absolute;
+  top: 0;
+  visibility: visible;
+}
+
+.memory-game .flipped .front {
+  visibility: visible;
+}
+
+.memory-game .flipped .back {
+  visibility: hidden;
+}
