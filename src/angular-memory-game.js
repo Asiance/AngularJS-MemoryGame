@@ -85,12 +85,13 @@
      */
     function makeDeck(tileNames) {
       var tileDeck = [];
-      tileNames.forEach(function(name) {
-        tileDeck.push(new Tile(name));
-        tileDeck.push(new Tile(name));
-      });
+      for (var i = 0; i < tileNames.length; i++) {
+        tileDeck.push(new Tile(tileNames[i]));
+        tileDeck.push(new Tile(tileNames[i]));
+      };
       return tileDeck;
     }
+
 
     /**
      * Arrange a set of Tiles on a two-dimensionnal grid
