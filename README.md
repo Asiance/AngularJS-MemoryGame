@@ -24,41 +24,41 @@ $scope.tilesSrc = ['sci_fi-48.png', 'sheep-48.png', 'fork-48.png'];
 ```html
 <!doctype html>
 <html ng-app>
-  <head>
-    <link rel="stylesheet" href="angular-memory-game.css">
-    <script src="angular.js"></script>
-    <script src="controller.js"></script>
-    <script src="angular-memory-game.js"></script>
-  </head>
-  <body>
-    <memory-game
-      columns="3"
-      lines="2"
-      tiles-dir="./img/"
-      tiles-src="tilesSrc"
-      tile-width="48"
-      tile-height="48">
-    </memory-game>
-  </body>
+  <head>
+    <link rel="stylesheet" href="angular-memory-game.css">
+    <script src="angular.js"></script>
+    <script src="controller.js"></script>
+    <script src="angular-memory-game.js"></script>
+  </head>
+  <body>
+    <memory-game
+      columns="3"
+      lines="2"
+      tiles-dir="./img/"
+      tiles-src="tilesSrc"
+      tile-width="48"
+      tile-height="48">
+    </memory-game>
+  </body>
 </html>
 ```
 
 4. Catch game events:
 ```javascript
 $scope.$on("memoryGameUnmatchedPairEvent", function() {
-  $scope.message = "Try again!";
+  $scope.message = "Try again!";
 });
 $scope.$on("memoryGameMatchedPairEvent", function() {
-  $scope.message = "Good match!";
+  $scope.message = "Good match!";
 });
 $scope.$on("memoryGameCompletedEvent", function() {
-  $scope.message = "Success!";
+  $scope.message = "Success!";
 });
 ```
 5. Trigger restart event (with possibility to load new tiles):
 ```javascript
 var newParams = {
-  "tilesSrc": ['fork-48.png', 'fork-48.png', 'fork-48.png']
+  "tilesSrc": ['fork-48.png', 'fork-48.png', 'fork-48.png']
 };
 $scope.$broadcast("memoryGameRestartEvent", newParams);
 ```
